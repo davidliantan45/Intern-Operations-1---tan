@@ -13,7 +13,7 @@ jobs:
 
       - name: Set up Node.js 16.x
         uses: actions/setup-node@v2
-      with:
+        with:
           node-version: 16.x
 
       - name: Login to Docker Hub
