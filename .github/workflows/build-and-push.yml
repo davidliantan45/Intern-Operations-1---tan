@@ -1,0 +1,21 @@
+name: Build and Push Docker Image
+on:
+  push:
+    branches:
+      - main 
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Login to Docker Hub
+        run: echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u davidliantan45 --password-stdin
+
+      - name: Build Docker image
+        run: docker build -t davidliantan45/time-greeter-api .
+
+      - name: Push Docker image
+        run: docker push davidliantan45/time-greeter-api
